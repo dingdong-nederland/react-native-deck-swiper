@@ -762,7 +762,18 @@ class Swiper extends Component {
     const stackCard = this.props.renderCard(cards[index], index)
     const swipableCardStyle = this.calculateSwipableCardStyle()
     const renderOverlayLabel = this.renderOverlayLabel()
-    renderedCards.push(
+    const card = this.props.enableInnerScroll ? (
+      <Animated.ScrollView
+        key={key}
+        style={firstCard ? swipableCardStyle : stackCardZoomStyle}
+        {...this._panResponder.panHandlers}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 50 }}
+      >
+        {firstCard ? renderOverlayLabel : null}
+        {stackCard}
+      </Animated.ScrollView>
+    ):(
       <Animated.View
         key={key}
         style={firstCard ? swipableCardStyle : stackCardZoomStyle}
@@ -772,6 +783,7 @@ class Swiper extends Component {
         {stackCard}
       </Animated.View>
     )
+    renderedCards.push(card)
   }
 
   renderStack = () => {
@@ -875,6 +887,7 @@ Swiper.propTypes = {
   disableLeftSwipe: PropTypes.bool,
   disableRightSwipe: PropTypes.bool,
   disableTopSwipe: PropTypes.bool,
+  enableInnerScroll: PropTypes.bool,
   goBackToPreviousCardOnSwipeBottom: PropTypes.bool,
   goBackToPreviousCardOnSwipeLeft: PropTypes.bool,
   goBackToPreviousCardOnSwipeRight: PropTypes.bool,
@@ -948,6 +961,7 @@ Swiper.defaultProps = {
   disableLeftSwipe: false,
   disableRightSwipe: false,
   disableTopSwipe: false,
+  enableInnerScroll: false,
   horizontalSwipe: true,
   horizontalThreshold: width / 4,
   goBackToPreviousCardOnSwipeBottom: false,
