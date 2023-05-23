@@ -757,7 +757,7 @@ class Swiper extends Component {
   }
 
   pushCardToStack = (renderedCards, index, position, key, firstCard) => {
-    const { cards } = this.props
+    const { cards, onCardScroll } = this.props
     const stackCardZoomStyle = this.calculateStackCardZoomStyle(position)
     const stackCard = this.props.renderCard(cards[index], index)
     const swipableCardStyle = this.calculateSwipableCardStyle()
@@ -769,6 +769,7 @@ class Swiper extends Component {
         {...this._panResponder.panHandlers}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 50 }}
+        onScroll={onCardScroll}
       >
         {firstCard ? renderOverlayLabel : null}
         {stackCard}
@@ -904,6 +905,7 @@ Swiper.propTypes = {
   keyExtractor: PropTypes.func,
   marginBottom: PropTypes.number,
   marginTop: PropTypes.number,
+  onCardScroll: PropTypes.func,
   onSwiped: PropTypes.func,
   onSwipedAborted: PropTypes.func,
   onSwipedAll: PropTypes.func,
