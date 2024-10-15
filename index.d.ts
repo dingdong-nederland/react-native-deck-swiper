@@ -34,6 +34,7 @@ declare module 'react-native-deck-swiper' {
     marginBottom?: number;
     marginTop?: number;
     onCardScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+    onCardScrollEnd?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
     onSwiped?: (cardIndex: number) => void;
     onSwipedAborted?: () => void;
     onSwipedAll?: () => void;
