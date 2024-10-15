@@ -17,6 +17,7 @@ declare module 'react-native-deck-swiper' {
     disableRightSwipe?: boolean;
     disableTopSwipe?: boolean;
     enableInnerScroll?: boolean;
+    allowInnerScroll?: boolean;
     horizontalSwipe?: boolean;
     horizontalThreshold?: number;
     goBackToPreviousCardOnSwipeBottom?: boolean;
