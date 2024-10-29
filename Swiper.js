@@ -431,9 +431,12 @@ class Swiper extends Component {
             this._animatedValueX,
             this._animatedValueY
           )
+        
+        this.props.onSwipeAnimationEnd(this.state.firstCardIndex)
 
         if (mustDecrementCardIndex) {
           this.decrementCardIndex(onSwiped)
+          
         } else {
           this.incrementCardIndex(onSwiped)
         }
@@ -774,6 +777,7 @@ class Swiper extends Component {
     const swipableCardStyle = this.calculateSwipableCardStyle()
     const renderOverlayLabel = this.renderOverlayLabel()
     const card = this.props.enableInnerScroll ? (
+      
       <Animated.ScrollView
         scrollEnabled={scrollEnabled}
         key={key}
@@ -929,6 +933,7 @@ Swiper.propTypes = {
   onSwipedRight: PropTypes.func,
   onSwipedTop: PropTypes.func,
   onSwiping: PropTypes.func,
+  onSwipeAnimationEnd: PropTypes.func,
   onTapCard: PropTypes.func,
   onTapCardDeadZone: PropTypes.number,
   outputCardOpacityRangeX: PropTypes.array,
@@ -1014,6 +1019,7 @@ Swiper.defaultProps = {
   onSwipedLeft: cardIndex => { },
   onSwipedRight: cardIndex => { },
   onSwipedTop: cardIndex => { },
+  onSwipeAnimationEnd: cardIndex => { },
   onSwiping: () => { },
   onTapCard: (cardIndex) => { },
   onTapCardDeadZone: 5,

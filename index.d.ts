@@ -17,7 +17,6 @@ declare module 'react-native-deck-swiper' {
     disableRightSwipe?: boolean;
     disableTopSwipe?: boolean;
     enableInnerScroll?: boolean;
-    allowInnerScroll?: boolean;
     horizontalSwipe?: boolean;
     horizontalThreshold?: number;
     goBackToPreviousCardOnSwipeBottom?: boolean;
@@ -34,7 +33,6 @@ declare module 'react-native-deck-swiper' {
     marginBottom?: number;
     marginTop?: number;
     onCardScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-    onCardScrollEnd?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
     onSwiped?: (cardIndex: number) => void;
     onSwipedAborted?: () => void;
     onSwipedAll?: () => void;
@@ -43,6 +41,7 @@ declare module 'react-native-deck-swiper' {
     onSwipedRight?: (cardIndex: number) => void;
     onSwipedTop?: (cardIndex: number) => void;
     onSwiping?: (x: number, y: number) => void;
+    onSwipeAnimationEnd?: (cardIndex: number) => void;
     onTapCard?: (cardIndex: number) => void;
     onTapCardDeadZone?: number;
     outputCardOpacityRangeX?: [number, number, number, number, number];
